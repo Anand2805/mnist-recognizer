@@ -35,4 +35,4 @@ if __name__ == '__main__':
     global nRFC, accuracy
     nRFC, accuracy = rfc.findNEstimators()
     print(nRFC, accuracy)
-    app.run(port=5002)
+    app.run(debug=True, use_reloader=True)
