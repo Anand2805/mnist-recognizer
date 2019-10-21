@@ -3,21 +3,40 @@ import numpy as np
 import csv
 import png
 import randomForest as rfc
+import KNN as knn
+
 
 def readAndSendRecognizedData(imgBase64: Image, nRFC):
     wbground = Image.new("RGB", imgBase64.size, (255, 255, 255))
     wbground.paste(imgBase64, mask=imgBase64.split()[3])
     greys_image = wbground.convert(mode='L')
-    
+
     # save and show the image
-    #gs_image.save('d.jpg')
+    # gs_image.save('d.jpg')
     #image2 = Image.open('d.jpg')
-    #image2.show()
+    # image2.show()
 
     print(greys_image)
     dQueryData = greyScaleToMnist(greys_image)
     predicted = rfc.trainAndPredictData(nRFC, dQueryData)
     return predicted
+
+
+def readAndSendRecognizedDataKNN(imgBase64: Image, k, pca_n, clfKnn, pca):
+    wbground = Image.new("RGB", imgBase64.size, (255, 255, 255))
+    wbground.paste(imgBase64, mask=imgBase64.split()[3])
+    greys_image = wbground.convert(mode='L')
+
+    # save and show the image
+    # gs_image.save('d.jpg')
+    #image2 = Image.open('d.jpg')
+    # image2.show()
+
+    print(greys_image)
+    dQueryData = greyScaleToMnist(greys_image)
+    predicted = knn.trainAndPredictData(k, pca_n, dQueryData, clfKnn, pca)
+    return predicted
+
 
 def greyScaleToMnist(img_grey):
     value = np.asarray(img_grey)
@@ -28,6 +47,6 @@ def greyScaleToMnist(img_grey):
     print(np.reshape(value, (28, 28)))
     return value
     #png.from_array(np.reshape(value, (28, 28)) , 'L').save("small_smiley.png")
-    #with open("img_pixels.csv", 'a') as f:
+    # with open("img_pixels.csv", 'a') as f:
     #    writer = csv.writer(f)
     #    writer.writerow(value)
