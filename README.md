@@ -8,3 +8,5 @@ i have included the angular built UI in template and static folders.
 start the server using 
 
 ## python mnistAlgoServe.py
+
+![Live snap shot](mnist.jpeg)
