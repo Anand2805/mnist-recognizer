@@ -5,7 +5,7 @@ Flask-RESTful==0.3.7
 Flask-SQLAlchemy==2.4.0
 jsonschema==2.6.0
 imageio==2.3.0
-Pillow==6.2.0
+Pillow>=6.2.2
 numpy==1.14.3
 numpydoc==0.8.0
 unicodecsv==0.14.1
